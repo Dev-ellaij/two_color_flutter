@@ -1,0 +1,270 @@
+import 'dart:ui'; // Add this import for ImageFilter
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp(
+    home: MyWidget(),
+  ));
+}
+
+class MyWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: [
+          // First Stack for the background
+          Positioned.fill(
+            child: Row(
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width / 2,
+                  color: Colors.orange,
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width / 2,
+                  color: Colors.blue,
+                ),
+              ],
+            ),
+          ),
+
+          // Second Stack for the blurred overlay
+          Positioned.fill(
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+              child: Container(
+                color: Colors.transparent,
+              ),
+            ),
+          ),
+
+          // Third Stack for the centered white box
+          Positioned(
+            top: 25,
+            bottom: 25,
+            right: 60,
+            left: 60,
+            child: Container(
+              color: Colors.white,
+            ),
+          ),
+
+          // Fourth Stack for the content (Centered Rectangle Box and Take Out/Dine In Boxes)
+          Positioned.fill(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // Centered Rectangle Box with white background
+                Container(
+                  width: 200,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    color: Colors.white, // Change the color to white
+                    borderRadius: BorderRadius.circular(8.0),
+                    boxShadow: [
+                      BoxShadow(
+                        spreadRadius: 2,
+                        blurRadius: 5,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Center Box',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20.0),
+
+                // Take Out and Dine In Boxes
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    whiteSquareBox('Take Out', () {
+                      // Add functionality for Take Out button
+                    }),
+                    SizedBox(width: 20.0),
+                    whiteSquareBox('Dine In', () {
+                      // Add functionality for Dine In button
+                    }),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget whiteSquareBox(String text, VoidCallback onPressed) {
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        width: 120,
+        height: 100,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8.0),
+          boxShadow: [
+            BoxShadow(
+              spreadRadius: 2,
+              blurRadius: 5,
+              offset: Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Center(
+          child: Text(
+            text,
+            style: TextStyle(
+              fontSize: 16,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+import 'dart:ui'; // Add this import for ImageFilter
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MaterialApp(
+    home: MyWidget(),
+  ));
+}
+
+class MyWidget extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body: Stack(
+        children: [
+          // First Stack for the background
+          Positioned.fill(
+            child: Row(
+              children: [
+                Container(
+                  width: MediaQuery.of(context).size.width / 2,
+                  color: Colors.orange,
+                ),
+                Container(
+                  width: MediaQuery.of(context).size.width / 2,
+                  color: Colors.blue,
+                ),
+              ],
+            ),
+          ),
+
+          // Second Stack for the blurred overlay
+          Positioned.fill(
+            child: BackdropFilter(
+              filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+              child: Container(
+                color: Colors.transparent,
+              ),
+            ),
+          ),
+
+          // Third Stack for the centered white box
+          Positioned(
+            top: 25,
+            bottom: 25,
+            right: 60,
+            left: 60,
+            child: Container(
+              color: Colors.white,
+            ),
+          ),
+
+          // Fourth Stack for the content (Centered Rectangle Box and Take Out/Dine In Boxes)
+          Positioned.fill(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // Centered Rectangle Box with white background
+                Container(
+                  width: 200,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    color: Colors.white, // Change the color to white
+                    borderRadius: BorderRadius.circular(8.0),
+                    boxShadow: [
+                      BoxShadow(
+                        spreadRadius: 2,
+                        blurRadius: 5,
+                        offset: Offset(0, 3),
+                      ),
+                    ],
+                  ),
+                  child: Center(
+                    child: Text(
+                      'Center Box',
+                      style: TextStyle(
+                        fontSize: 16,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20.0),
+
+                // Take Out and Dine In Boxes
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    whiteSquareBox('Take Out', () {
+                      // Add functionality for Take Out button
+                    }),
+                    SizedBox(width: 20.0),
+                    whiteSquareBox('Dine In', () {
+                      // Add functionality for Dine In button
+                    }),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget whiteSquareBox(String text, VoidCallback onPressed) {
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        width: 120,
+        height: 100,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(8.0),
+          boxShadow: [
+            BoxShadow(
+              spreadRadius: 2,
+              blurRadius: 5,
+              offset: Offset(0, 3),
+            ),
+          ],
+        ),
+        child: Center(
+          child: Text(
+            text,
+            style: TextStyle(
+              fontSize: 16,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
